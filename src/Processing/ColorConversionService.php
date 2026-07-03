@@ -212,10 +212,10 @@ class ColorConversionService
                 'hex'  => $rgb->toHex(),
                 'cmyk' => $cmykProfiled,
             ],
-            inField: [
-                'rgb'  => $rgb,
-                'cmyk' => $cmykMath,
-            ],
+            // inField: [
+            //     'rgb'  => $rgb,
+            //     'cmyk' => $cmykMath,
+            // ],
             name: $this->colornameService->fromRgb($perceptionRgb),
         );
     }
@@ -246,10 +246,10 @@ class ColorConversionService
                 'hex'  => $perceptionRgb->toHex(),
                 'cmyk' => $valuesCmyk,
             ],
-            inField: [
-                'rgb'  => $valuesRgb,
-                'cmyk' => $valuesCmyk,
-            ],
+            // inField: [
+            //     'rgb'  => $valuesRgb,
+            //     'cmyk' => $valuesCmyk,
+            // ],
             name: $this->colornameService->fromRgb($perceptionRgb),
         );
     }
@@ -266,7 +266,7 @@ class ColorConversionService
         array $values,
         array $perception,
         array $profiled,
-        array $inField,
+        // array $inField,
         string $name,
     ): ICCConversionResultDTO {
         $v1Data = $this->buildV1ResultData($values, $perception, $profiled, $inField, $name);
@@ -292,7 +292,7 @@ class ColorConversionService
         array $values,
         array $perception,
         array $profiled,
-        array $inField,
+        // array $inField,
         string $name,
     ): array {
         return [
@@ -302,7 +302,7 @@ class ColorConversionService
             'values' => $this->stringifyColorValues($values),
             'perception' => $this->stringifyColorValues($perception),
             'profiled' => $this->stringifyColorValues($profiled),
-            'inField' => $this->stringifyColorValues($inField),
+            // 'inField' => $this->stringifyColorValues($inField),
             'name' => $name,
             'conversionStack' => $this->conversionStack(),
         ];
@@ -324,6 +324,7 @@ class ColorConversionService
             'cmyk' => $values['cmyk']->toString(),
             'perception' => $perception['hex']->toString(),
             'name' => $name,
+            'isProfiled' => $this->profileNames()['cmyk'] ? true : false,
         ];
 
         if ($this->includeSchemes) {
