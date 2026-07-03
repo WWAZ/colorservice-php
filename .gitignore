@@ -1,0 +1,8 @@
+/vendor/
+composer.lock
+.colorprofile.config.json
+/storage/
+.phpunit.cache/
+.phpunit.result.cache
+/tests/fixtures/
+examples/
