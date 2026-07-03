@@ -269,7 +269,7 @@ class ColorConversionService
         // array $inField,
         string $name,
     ): ICCConversionResultDTO {
-        $v1Data = $this->buildV1ResultData($values, $perception, $profiled, $inField, $name);
+        $v1Data = $this->buildV1ResultData($values, $perception, $profiled, $name);
         $v2Data = $this->buildV2ResultData($values, $perception, $name);
 
         if (strtolower($this->acceptICCConversionDTO) === 'v1') {
